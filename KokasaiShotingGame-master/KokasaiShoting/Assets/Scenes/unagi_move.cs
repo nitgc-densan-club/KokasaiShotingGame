@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class move : MonoBehaviour {
+public class unagi_move : MonoBehaviour {
     float speed = -0.01f;
     Rigidbody rb;
 
