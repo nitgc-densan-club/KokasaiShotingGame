@@ -58,12 +58,14 @@
      <Compile Include="Assets\Scenes\BulletControl.cs" />
      <Compile Include="Assets\Scenes\BulletYamaguchi.cs" />
      <Compile Include="Assets\Scenes\EnemyControlYamaguchi.cs" />
+     <Compile Include="Assets\Scenes\gamemanager.cs" />
      <Compile Include="Assets\Scenes\PlayerControl.cs" />
      <Compile Include="Assets\Scenes\UI_Takizawa.cs" />
      <Compile Include="Assets\Scenes\unagi_move.cs" />
      <Compile Include="Assets\Scenes\unagi_tama.cs" />
      <Compile Include="Assets\Scenes\Yamada_Enemy2.cs" />
      <Compile Include="Assets\Scenes\Yamada_Enemy3.cs" />
+     <Compile Include="Assets\Scenes\Yamada_Enemy4.cs" />
      <Compile Include="Assets\Scenes\YamadaEnemy.cs" />
      <Compile Include="Assets\StarSparrow\Readme\Readme Files\Scripts\Readme.cs" />
  <Reference Include="Unity.TextMeshPro.Editor">
