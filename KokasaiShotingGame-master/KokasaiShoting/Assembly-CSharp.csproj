@@ -62,6 +62,7 @@
      <Compile Include="Assets\Scenes\PlayerControl.cs" />
      <Compile Include="Assets\Scenes\UI_Takizawa.cs" />
      <Compile Include="Assets\Scenes\unagi_move.cs" />
+     <Compile Include="Assets\Scenes\Unagi_move2.cs" />
      <Compile Include="Assets\Scenes\unagi_tama.cs" />
      <Compile Include="Assets\Scenes\Yamada_Enemy2.cs" />
      <Compile Include="Assets\Scenes\Yamada_Enemy3.cs" />
