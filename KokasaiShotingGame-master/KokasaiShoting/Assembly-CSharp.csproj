@@ -67,6 +67,7 @@
      <Compile Include="Assets\Scenes\Yamada_Enemy2.cs" />
      <Compile Include="Assets\Scenes\Yamada_Enemy3.cs" />
      <Compile Include="Assets\Scenes\Yamada_Enemy4.cs" />
+     <Compile Include="Assets\Scenes\Yamada_Enemy5.cs" />
      <Compile Include="Assets\Scenes\YamadaEnemy.cs" />
      <Compile Include="Assets\StarSparrow\Readme\Readme Files\Scripts\Readme.cs" />
  <Reference Include="Unity.TextMeshPro.Editor">
