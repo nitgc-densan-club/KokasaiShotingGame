@@ -45,4 +45,21 @@ public class Unagi_move2 : MonoBehaviour
 		return Q2;//Q2はその時のカーブ地点
 
 	}
+
+	//衝突判定
+	private void OnCollisionEnter(Collision collision)
+	{
+		//PlayerBulletに当たったら自身を破壊
+		if (collision.gameObject.tag == "PlayerBullet")
+		{
+			Destroy(this.gameObject);
+		}
+	}
+	private void OnTriggerEnter(Collider other)
+	{
+		if (other.gameObject.tag == "PlayerBom")
+		{
+			Destroy(this.gameObject);
+		}
+	}
 }

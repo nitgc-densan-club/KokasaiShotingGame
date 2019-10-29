@@ -84,6 +84,22 @@ public class unagi_move : MonoBehaviour
 		{
 			Destroy(this.gameObject);
 		}
+	}
 
+	//衝突判定
+    private void OnCollisionEnter(Collision collision)
+	{
+		//PlayerBulletに当たったら自身を破壊
+		if (collision.gameObject.tag == "PlayerBullet")
+		{
+			Destroy(this.gameObject);
+		}
+	}
+	private void OnTriggerEnter(Collider other)
+	{
+		if (other.gameObject.tag == "PlayerBom")
+		{
+			Destroy(this.gameObject);
+		}
 	}
 }

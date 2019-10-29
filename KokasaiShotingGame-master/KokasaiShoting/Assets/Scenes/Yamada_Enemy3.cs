@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections;
-
 public class Yamada_Enemy3 : MonoBehaviour
 {
 	int a;
@@ -35,5 +34,26 @@ public class Yamada_Enemy3 : MonoBehaviour
 			timeElasped = 0.0f;
 		}
 		rb.AddForce(nextVec * speed, ForceMode.Impulse);
+	}
+	void OnCollisionEnter(Collision collision)
+	{
+		if (collision.gameObject.tag == "PlayerBullet")
+		{
+			Destroy(gameObject);
+		}
+		else
+		{
+			//それ以外の処理
+		}
+	}
+	void OnTriggerEnter(Collider other)
+	{
+		if (other.gameObject.tag == "PlayerBomb")
+		{
+			Destroy(gameObject);
+		}
+		else
+		{
+		}
 	}
 }

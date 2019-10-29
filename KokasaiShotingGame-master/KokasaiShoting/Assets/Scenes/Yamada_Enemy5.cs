@@ -37,4 +37,25 @@ public class Yamada_Enemy5 : MonoBehaviour
 		}
 		rbody.AddForce(force, ForceMode.Impulse);
 	}
+	void OnCollisionEnter(Collision collision)
+	{
+		if (collision.gameObject.tag == "PlayerBullet")
+		{
+			Destroy(gameObject);
+		}
+		else
+		{
+			//それ以外の処理
+		}
+	}
+	void OnTriggerEnter(Collider other)
+	{
+		if (other.gameObject.tag == "PlayerBomb")
+		{
+			Destroy(gameObject);
+		}
+		else
+		{
+		}
+	}
 }

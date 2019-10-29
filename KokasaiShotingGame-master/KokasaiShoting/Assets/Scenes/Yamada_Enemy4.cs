@@ -71,4 +71,25 @@ public class Yamada_Enemy4 : MonoBehaviour
 		}
 		rb.AddForce(nextVec * Speed, ForceMode.Impulse);
 	}
+	void OnCollisionEnter(Collision collision)
+	{
+		if (collision.gameObject.tag == "PlayerBullet")
+		{
+			Destroy(gameObject);
+		}
+		else
+		{
+			//それ以外の処理
+		}
+	}
+	void OnTriggerEnter(Collider other)
+	{
+		if (other.gameObject.tag == "PlayerBomb")
+		{
+			Destroy(gameObject);
+		}
+		else
+		{
+		}
+	}
 }
