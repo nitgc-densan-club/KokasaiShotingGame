@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BallControl_player : MonoBehaviour
 {
-    public float deleteTime = 1.0f;
+    public float deleteTime = 10.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -15,6 +15,6 @@ public class BallControl_player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(0, 0, 1);
+        transform.Translate(0, 0, 2);
     }
 }

@@ -121,4 +121,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24ea9e16db89f429fb426f11cfd256aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tama: {fileID: 0}
+  tama: {fileID: 2962188372425887095, guid: e97f50d5149b4407e91dda4022cb27a2, type: 3}

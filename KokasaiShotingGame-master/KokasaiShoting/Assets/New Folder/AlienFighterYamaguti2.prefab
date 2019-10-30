@@ -121,5 +121,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b50f6e80377344b2a8a49990f93a4ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  originObject: {fileID: 0}
+  originObject: {fileID: 5890536864877615330, guid: 7a0541ecfeebf448693154c024534ff2,
+    type: 3}
   speed: 0.1
