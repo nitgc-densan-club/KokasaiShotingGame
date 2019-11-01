@@ -15,12 +15,17 @@ public class PlayerControl : MonoBehaviour
 	GameObject guardclone = null;
 	public AudioClip Player_ShotBulletSE;
 	AudioSource audioSource;
+	
+	[SerializeField]
+	GameObject	UiEvent;
+	GameManager	gamemanager;
 
 	// Start is called before the first frame update
 	void Start()
 	{
 		rb = GetComponent<Rigidbody>();
 		audioSource = GetComponent<AudioSource>();
+		gamemanager = UiEvent.GetComponent<GameManager>();
 	}
 
 	// Update is called once per frame
@@ -145,7 +150,7 @@ public class PlayerControl : MonoBehaviour
 			life = life - 1;
 			if (life == 0)
 			{
-				Destroy(this.gameObject);
+				gamemanager.gameover();
 			}
 		}
 	}
