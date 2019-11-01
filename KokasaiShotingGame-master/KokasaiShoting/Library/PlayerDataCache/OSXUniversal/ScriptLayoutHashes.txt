@@ -1,7 +1,8 @@
 OSXUniversal
 PlayerPath?
-/Users/tanakahideyuki/Documents/文化祭2019/KokasaiShotingGame-master/KokasaiShoting/TestBuild01.app
+/Users/tanakahideyuki/Documents/文化祭2019/KokasaiShotingGame-master/TestBuild01.app
 SceneListBegin?
+Assets/Scenes/startManu.unity
 Assets/Scenes/mainView.unity
 SceneListEnd?
 984dcc0ba3707b7691fbdca8ff508d28 Unity.TextMeshPro.dll:TMPro.TMP_SelectionCaret
@@ -18,7 +19,8 @@ e1bbf0ab858085e38fae6b12ebbdcd35 UnityEngine.Timeline.dll:UnityEngine.Timeline.C
 e1bbf0ab858085e38fae6b12ebbdcd35 UnityEngine.Timeline.dll:UnityEngine.Timeline.GroupTrack
 e1bbf0ab858085e38fae6b12ebbdcd35 UnityEngine.Timeline.dll:UnityEngine.Timeline.PlayableTrack
 201e3fde670b00545944bb3db215c80a UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
-32049bbbb149cb70cf1add426690e4bc Assembly-CSharp.dll:.PlayerControl
+719d49337f3433ac0b17237bbd4c694c Assembly-CSharp.dll:.Yamda_Enemy6
+9fedceb29cee9ed88ee2da674a62069a Assembly-CSharp.dll:.PlayerControl
 8435e790b14afa0e62e2d548988ceda8 Assembly-CSharp.dll:.BallControl_player
 e7a73f5f78ba6445195ec23b74a1ce2d Unity.TextMeshPro.dll:TMPro.TMP_ScrollbarEventHandler
 487b7913d83aa2b53fa106c2e681341b Assembly-CSharp.dll:.BulletControl
@@ -87,7 +89,9 @@ fc108ce7d98c40ac0907e8ca7f500c76 UnityEngine.UI.dll:UnityEngine.UI.Text
 0fd6822f6177297bd0eb4d83cc7a9030 UnityEngine.UI.dll:UnityEngine.UI.ToggleGroup
 abf1930d8126d0b2e00e9449129a0190 UnityEngine.UI.dll:UnityEngine.EventSystems.TouchInputModule
 64e54c0cbb0177c5ea26f340efb9ff85 UnityEngine.UI.dll:UnityEngine.UI.VerticalLayoutGroup
-2c50ba461c9b78ac09e8e0d20ae8b30d Assembly-CSharp.dll:.Yamada_Enemy4
+71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.StartSceneManager
+338deefbbf4579424f27e8aca194d4cf Assembly-CSharp.dll:.Yamada_Enemy4
+3341ff704f6b114c0e79dac476e67d4e Assembly-CSharp.dll:.StartWindow
 487b7913d83aa2b53fa106c2e681341b Assembly-CSharp.dll:.Yamada_Enemy3
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
 06f0fef534ca4c1d6064fd77a26bf722 UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationTrack
@@ -120,14 +124,16 @@ d251bf88db6c95a6b1aa0b69298da9ef UnityEngine.SpatialTracking.dll:UnityEngine.Spa
 303ad70ce203ad874efe2965d0fbcff9 Unity.Analytics.Tracker.dll:UnityEngine.Analytics.AnalyticsEventTracker
 7fb9de8dcf73854b6b328eca1f7a6e6d Unity.Analytics.Tracker.dll:UnityEngine.Analytics.AnalyticsTracker
 b8a5e8091ab0b8861d2add371082c5e0 Unity.TextMeshPro.dll:TMPro.TMP_SpriteAsset
-5a8f51bf23223e01a5e62b3465950aff Assembly-CSharp.dll:.unagi_move
+ce094a5b878d0158d32fd8ec7ca1bd86 Assembly-CSharp.dll:.Yamaguchi_ThirdEnemy
+b59ccf5064eac29626f3078dd54dbe17 Assembly-CSharp.dll:.unagi_move
 e07fbc68919a3d1eee44cefdb3b2ea3e Assembly-CSharp.dll:.YamadaEnemy
 b3ab2106268377ffe25dd18ac23dca28 Unity.TextMeshPro.dll:TMPro.TMP_Asset
-a43fd36aaa172a585b99caf774371c50 Assembly-CSharp.dll:.GameManager
+1d6d553d60a809ef2a2949a45321d673 Assembly-CSharp.dll:.GameManager
 71bb6a6b6c8f052f948db64c7dd3ca4f Unity.Analytics.Editor.dll:UnityEditor.Analytics.AnalyticsEventTrackerEditor
 71bb6a6b6c8f052f948db64c7dd3ca4f Unity.TextMeshPro.dll:TMPro.TMP_SpriteAnimator
 ce094a5b878d0158d32fd8ec7ca1bd86 Assembly-CSharp.dll:.EnemyControlYamaguchi
 4fd8bf02e3089425d3502e26c44ba31a Unity.TextMeshPro.dll:TMPro.TextContainer
+ce094a5b878d0158d32fd8ec7ca1bd86 Assembly-CSharp.dll:.Yamaguchi_SecondEnemy
 e6ae40841db498b6e673877ac45ad208 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
 1dcb82730d983b77cec736c6ef19f814 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkDiscovery
@@ -144,7 +150,7 @@ ad9173d3a69d99153f38ed4b62226129 UnityEngine.Networking.dll:UnityEngine.Networki
 5887ef1bc706b22b773d253fd443ceef UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformVisualizer
 35a9693c388776aaf487636491a20f11 Unity.TextMeshPro.dll:TMPro.TMP_FontAsset
 e1300922cc039f41ab46a47f4cb05898 Unity.TextMeshPro.dll:TMPro.TMP_Settings
-71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.Unagi_move2
+afc5b93a7b192de2dcb3832fe35a5c7e Assembly-CSharp.dll:.Unagi_move2
 88cc9df3c6fc697bfbeacd24c0d6f2d7 UnityEngine.TestRunner.dll:UnityEngine.TestTools.BeforeAfterTestCommandState
 88cc9df3c6fc697bfbeacd24c0d6f2d7 UnityEngine.TestRunner.dll:UnityEngine.TestTools.EnumerableSetUpTearDownCommandState
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.Callbacks.PlayModeRunnerCallback
@@ -164,6 +170,7 @@ e6e3c9701bc9785473688158c64b48c6 Assembly-CSharp.dll:.UI_Takizawa
 ee0cef6caaac8ae485bfa82f000f0f7b Unity.TextMeshPro.dll:TMPro.TextMeshProUGUI
 5fc094978ce3e3591a7500ed380d854a Unity.Analytics.DataPrivacy.dll:UnityEngine.Analytics.DataPrivacyButton
 8373e3d50fdbb84caa27a75284d1753a Assembly-CSharp.dll:.bombControl_player
+71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.difenceLine
 487b7913d83aa2b53fa106c2e681341b Assembly-CSharp.dll:.Yamada_Enemy2
 d251bf88db6c95a6b1aa0b69298da9ef UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 d791aa6007fa3640be1164ea75bb087d Unity.TextMeshPro.dll:TMPro.TMP_StyleSheet
@@ -172,8 +179,3 @@ d791aa6007fa3640be1164ea75bb087d Unity.TextMeshPro.dll:TMPro.TMP_StyleSheet
 5d064456c40f7c34690dc0c9d079accc Assembly-CSharp.dll:.BulletYamaguchi
 8649814970b42d345b89944b862453cc Unity.TextMeshPro.dll:TMPro.TMP_SubMesh
 719d49337f3433ac0b17237bbd4c694c Assembly-CSharp.dll:.Yamada_Enemy5
-719d49337f3433ac0b17237bbd4c694c Assembly-CSharp.dll:.Yamda_Enemy6
-3341ff704f6b114c0e79dac476e67d4e Assembly-CSharp.dll:.StartWindow
-18071c3b6c1bff03a41409893697085c Assembly-CSharp.dll:.GameOverWindow
-ce094a5b878d0158d32fd8ec7ca1bd86 Assembly-CSharp.dll:.Yamaguchi_ThirdEnemy
-ce094a5b878d0158d32fd8ec7ca1bd86 Assembly-CSharp.dll:.Yamaguchi_SecondEnemy

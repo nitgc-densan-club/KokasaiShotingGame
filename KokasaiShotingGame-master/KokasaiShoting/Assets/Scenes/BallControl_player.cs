@@ -15,6 +15,6 @@ public class BallControl_player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(0, 0, 2);
+        transform.Translate(0, 0, 3);
     }
 }

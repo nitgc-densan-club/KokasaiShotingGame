@@ -11,8 +11,8 @@ public static class GameData
 }
 public class GameManager : MonoBehaviour
 {
-	public GameObject ScoreText/*, GameOverWindow, GameOverText, ContinueButton*/;//キャンバスごと有効無効化させるため不必要
-	[SerializeField] Text Score/*, GameOver*/, RunningScore;
+	public GameObject ScoreText;//キャンバスごと有効無効化させるため不必要
+	[SerializeField] Text Score, RunningScore;
 	[SerializeField]
 	GameObject[] enemyTeams;
 	[SerializeField]
@@ -26,26 +26,31 @@ public class GameManager : MonoBehaviour
 	int NumberOfEnemy;
 	public GameObject Sel;
 
-	//フェーズ
-	//public int phase_GameManeger;
-
+	//result
+	List<int> scoreList = new List<int>();
+	[SerializeField]
+	Text[] resultRanking_Text = new Text[5];
+	[SerializeField]
+	Text myScore_Text;
 
 	// Start is called before the first frame update
 	void Start()
 	{
-		//GameOverWindow.SetActive(false);
-		//GameOver = GameOverText.GetComponent<Text>();//Line15に同じ
-		//Invoke("gameOver", 3f);//デバッグ用gameOver起動コード
-		/*GameOver.enabled = false;
-        ContinueButton.SetActive(false);*/
-
 		//フェーズ管理(レベルによって出てくる敵キャラを制限、数値はお任せ)
-		//int levellimit;
 		for (int i = 0; i < positionremainder.Length; i++)
 		{
-			Instantiate(enemyTeams[GameData.fase-1],
-			positionremainder[i].transform.position,
-			enemyTeams[GameData.fase-1].transform.rotation);
+			if(i % 2 == 0 && GameData.fase <= 2)
+			{
+				Instantiate(enemyTeams[GameData.fase-1],
+				positionremainder[i].transform.position,
+				enemyTeams[GameData.fase-1].transform.rotation);
+			}
+			else
+			{
+				Instantiate(enemyTeams[GameData.fase-1],
+				positionremainder[i].transform.position,
+				enemyTeams[GameData.fase-1].transform.rotation);
+			}
 		}
 
 		//クリアチェック用に敵が何体いるか最初に確認し数をintで格納しておく
@@ -57,13 +62,7 @@ public class GameManager : MonoBehaviour
 
 	// Update is called once per frame
 	void Update()
-	{/*
-        numberOfEnemy = GameObject.FindGameObjectsWithTag("Enemy");
-        if (numberOfEnemy.Length == 0)
-        {
-            gameclear();
-        }*/
-
+	{
 		//毎フレーム慚愧の確認をする(もう少しいい方法があったはず・・・)
 		if (GameData.Life == 0)
 		{
@@ -75,9 +74,21 @@ public class GameManager : MonoBehaviour
 	public void gameOver()
 	{
 		//スコア情報更新
-		//Score.text = "Score " + GameData.Gamescore + "pts";
 		GameOverWindow.SetActive(true);
-		Score.enabled = true;
+
+		//result output
+		/*
+		myScore_Text.enabled = true;
+		myScore_Text.text = GameData.Gamescore.ToString();
+		scoreList.Add(GameData.Gamescore);
+		scoreList.Sort();
+		for(int i = 0; i < Mathf.Min((float)scoreList.Count,(float)5); i++)
+		{
+			resultRanking_Text[i].text = scoreList[i].ToString();
+			resultRanking_Text[i].enabled = true;
+		}
+		*/
+
 		GameData.fase = 1;
 		Time.timeScale = 0f;
 		GameData.Gamescore = 0;
@@ -87,8 +98,9 @@ public class GameManager : MonoBehaviour
 	//ボタンに適用する関数
 	public void pressedContinue()
 	{
+		GameData.Life = 4;
+		Time.timeScale = 1f;
 		SceneManager.LoadScene("mainView");
-		//GameData.Gamescore = 0;
 	}
 
 	//スタート画面に戻るボタン
@@ -96,7 +108,6 @@ public class GameManager : MonoBehaviour
 	{
 		GetComponent<StartWindow>().enabled = true;
 		SceneManager.LoadScene("StartWindow");
-		//GameData.Gamescore = 0;
 	}
 
 	//次のfaseに向かうボタン
@@ -116,11 +127,6 @@ public class GameManager : MonoBehaviour
 	void gameclear()
 	{
 		gonextfase();
-		/*
-		ClearWindow.SetActive(true);
-
-		Selectable sel = Sel.GetComponent<Selectable> ();
-		sel.Select ();*/
 	}
 
 	//敵を倒しクリアチェックをする

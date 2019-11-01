@@ -12,7 +12,6 @@ public class PlayerControl : MonoBehaviour
 	public GameObject guard;
 	public float speed = 1.0f;
 	public Rigidbody rb;
-	int life = 4;
 	int rimit = 5;
 	bool shotflag = true;
 	bool bombflag = true;
@@ -20,6 +19,8 @@ public class PlayerControl : MonoBehaviour
 	GameObject guardclone = null;
 	public AudioClip Player_ShotBulletSE;
 	AudioSource audioSource;
+
+	bool flag_muteki = true;
 
 	[SerializeField]
 	Text LifeText;
@@ -30,8 +31,7 @@ public class PlayerControl : MonoBehaviour
 		rb = GetComponent<Rigidbody>();
 		audioSource = GetComponent<AudioSource>();
 		gameManager = FindObjectOfType<GameManager>();
-		
-		LifeText.text = life.ToString();
+		LifeText.text = GameData.Life.ToString();
 	}
 
 	// Update is called once per frame
@@ -137,6 +137,11 @@ public class PlayerControl : MonoBehaviour
 			rb.velocity = Vector3.zero;
 			transform.position = new Vector3(transform.position.x, -29.9f, transform.position.z);
 		}
+
+		if(!flag_muteki)
+		{
+			flag_muteki = true;
+		}
 	}
 
 	//アイテム
@@ -153,16 +158,16 @@ public class PlayerControl : MonoBehaviour
 		if (collision.gameObject.tag == "EnemyBullet")
 		{
 			Debug.Log("damege!!");
-			life -= 1;
-			LifeText.text = life.ToString();
-			if (life <= 0)
+			GameData.Life -= 1;
+			LifeText.text = GameData.Life.ToString();
+			if (GameData.Life <= 0)
 			{
 				gameManager.gameOver();
 			}
 		}
 	}
 
-	void OnTriggerExit(Collider collider)
+	void OnTriggerEnter(Collider collider)
 	{
 		if (collider.gameObject.tag == "item")
 		{
@@ -172,12 +177,13 @@ public class PlayerControl : MonoBehaviour
 			Destroy(collider.gameObject);
 			StartCoroutine(EffectTimer(30.0f, "speed"));
 		}
-		if (collider.gameObject.tag == "EnemyBullet")
+		if (collider.gameObject.tag == "EnemyBullet" && flag_muteki)
 		{
 			Destroy(collider.gameObject);
-			life = life - 1;
-			LifeText.text = life.ToString();
-			if (life <= 0)
+			flag_muteki = false;
+			GameData.Life -= 1;
+			LifeText.text = GameData.Life.ToString();
+			if (GameData.Life <= 0)
 			{
 				gameManager.gameOver();
 			}
