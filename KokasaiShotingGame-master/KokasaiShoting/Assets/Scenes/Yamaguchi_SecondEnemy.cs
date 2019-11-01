@@ -64,6 +64,8 @@ public class Yamaguchi_SecondEnemy : MonoBehaviour {
 
         rb.AddForce(force * speed, ForceMode.Impulse);
     }
+	
+	/*
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "PlayerBullet")
@@ -71,9 +73,14 @@ public class Yamaguchi_SecondEnemy : MonoBehaviour {
             Destroy(this.gameObject);
         }
     }
+	*/
     void OnTriggerEnter(Collider collider)
     {
         if (collider.gameObject.tag == "PlayerBomb")
+        {
+            Destroy(this.gameObject);
+        }
+		if (collider.gameObject.tag == "PlayerBullet")
         {
             Destroy(this.gameObject);
         }

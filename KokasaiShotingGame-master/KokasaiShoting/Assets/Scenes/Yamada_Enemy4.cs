@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class Yamada_Enemy4 : MonoBehaviour
 {
-	int Speed = -1;
+	public int Speed = -1;
 	Rigidbody rb;
 	Vector3 nextVec;
 	private float timeElasped = 0;
@@ -71,6 +71,7 @@ public class Yamada_Enemy4 : MonoBehaviour
 		}
 		rb.AddForce(nextVec * Speed, ForceMode.Impulse);
 	}
+	/* 
 	void OnCollisionEnter(Collision collision)
 	{
 		if (collision.gameObject.tag == "PlayerBullet")
@@ -82,14 +83,16 @@ public class Yamada_Enemy4 : MonoBehaviour
 			//それ以外の処理
 		}
 	}
+	*/
 	void OnTriggerEnter(Collider other)
 	{
 		if (other.gameObject.tag == "PlayerBomb")
 		{
 			Destroy(gameObject);
 		}
-		else
+		if (other.gameObject.tag == "PlayerBullet")
 		{
+			Destroy(gameObject);
 		}
 	}
 }

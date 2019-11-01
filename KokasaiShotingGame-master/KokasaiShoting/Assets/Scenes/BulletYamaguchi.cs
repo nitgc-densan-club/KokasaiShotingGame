@@ -8,7 +8,7 @@ public class BulletYamaguchi : MonoBehaviour
 	Rigidbody rb;
 	Vector3 force;
 	public int speed = 3;
-	float TimeCount = 3;
+	float TimeCount = 30;
 	// Use this for initialization
 	void Start()
 	{

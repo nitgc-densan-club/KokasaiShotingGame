@@ -25,7 +25,7 @@ public class BulletControl : MonoBehaviour
 
 		timeElasped += Time.deltaTime;
 
-		if (timeElasped >= 1)
+		if (timeElasped >= 30)
 		{
 			Destroy(this.gameObject);
 

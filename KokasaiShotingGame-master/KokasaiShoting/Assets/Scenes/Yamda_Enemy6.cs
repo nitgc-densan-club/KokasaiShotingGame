@@ -38,6 +38,7 @@ public class Yamda_Enemy6 : MonoBehaviour
 		}
 		rbody.AddForce(force, ForceMode.Impulse);
 	}
+	/* 
 	void OnCollisionEnter(Collision collision)
 	{
 		if (collision.gameObject.tag == "PlayerBullet")
@@ -49,14 +50,16 @@ public class Yamda_Enemy6 : MonoBehaviour
 			//それ以外の処理
 		}
 	}
+	*/
 	void OnTriggerEnter(Collider other)
 	{
 		if (other.gameObject.tag == "PlayerBomb")
 		{
 			Destroy(gameObject);
 		}
-		else
+		if (other.gameObject.tag == "PlayerBullet")
 		{
+			Destroy(gameObject);
 		}
 	}
 }

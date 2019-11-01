@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
+
+	GameManager gameManager;
 	public GameObject ball;
 	public GameObject bomb;
 	public GameObject guard;
@@ -11,7 +13,9 @@ public class PlayerControl : MonoBehaviour
 	public Rigidbody rb;
 	int life = 4;
 	int rimit = 5;
-	bool guardflag = true;
+	bool shotflag = true;
+	bool bombflag = true;
+	bool guardflag = true; 
 	GameObject guardclone = null;
 	public AudioClip Player_ShotBulletSE;
 	AudioSource audioSource;
@@ -21,25 +25,28 @@ public class PlayerControl : MonoBehaviour
 	{
 		rb = GetComponent<Rigidbody>();
 		audioSource = GetComponent<AudioSource>();
+		gameManager = GetComponent<GameManager>();
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
 		//バレット
-		if (Input.GetKeyDown(KeyCode.Space))
+		if (Input.GetButton("Shot") && shotflag)
 		{
 			audioSource.PlayOneShot(Player_ShotBulletSE);
 			Instantiate(ball, new Vector3(transform.position.x, transform.position.y, 10), ball.transform.rotation);
+			shotflag = false;
+			StartCoroutine(EffectTimer(0.2f, "shot"));
 		}
 		//ボム
-		if (Input.GetKeyDown(KeyCode.B))
+		if (Input.GetButtonDown("Bomb") && rimit > 0 && bombflag)
 		{
-			if (rimit > 0)
-			{
-				Instantiate(bomb, new Vector3(transform.position.x, 10, 10), bomb.transform.rotation);
-				rimit--;
-			}
+		
+			Instantiate(bomb, new Vector3(transform.position.x, 10, 10), bomb.transform.rotation);
+			rimit--;
+			bombflag = false;
+			StartCoroutine(EffectTimer(2.0f, "bomb"));
 		}
 		//移動
 		float x = Input.GetAxisRaw("Horizontal") * speed;
@@ -48,7 +55,7 @@ public class PlayerControl : MonoBehaviour
 		rb.AddForce(x, y, 0, ForceMode.Impulse);
 
 		//ガード
-		if (Input.GetKeyDown(KeyCode.V) && guardflag == true)
+		if (Input.GetButtonDown("Guard") && guardflag == true)
 		{
 			if (guardclone != null) Destroy(guardclone);
 			guardclone = Instantiate(guard, new Vector3(transform.position.x, transform.position.y, 10), guard.transform.rotation);
@@ -125,8 +132,6 @@ public class PlayerControl : MonoBehaviour
 			rb.velocity = Vector3.zero;
 			transform.position = new Vector3(transform.position.x, -29.9f, transform.position.z);
 		}
-
-
 	}
 
 	//アイテム
@@ -150,6 +155,26 @@ public class PlayerControl : MonoBehaviour
 		}
 	}
 
+	private void OnTriggerEnter(Collider collider)
+	{
+		if (collider.gameObject.tag == "item")
+		{
+			//Debug.Log("1" + speed);
+			speed = speed * 2;
+			//Debug.Log("2" + speed);
+			Destroy(collider.gameObject);
+			StartCoroutine(EffectTimer(30.0f, "speed"));
+		}
+		if (collider.gameObject.tag == "EnamyBullet")
+		{
+			life = life - 1;
+			if (life == 0)
+			{
+				gameManager.gameOver();
+			}
+		}
+	}
+
 	//コルーチンの本体
 	IEnumerator EffectTimer(float time, string events)
 	{
@@ -158,6 +183,12 @@ public class PlayerControl : MonoBehaviour
 		{
 			case "speed":
 				speed = speed / 2;
+				break;
+			case "shot":
+				shotflag = true;
+				break;
+			case "bomb":
+				bombflag = true;
 				break;
 			case "guard":
 				guardflag = true;

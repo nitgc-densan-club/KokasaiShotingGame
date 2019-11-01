@@ -5,7 +5,7 @@ using UnityEngine;
 public class Unagi_move2 : MonoBehaviour
 {
 
-	float speed = -3.0f;
+	public float speed = -3.0f;
 	float distance_two;
 
 	Vector3 start = new Vector3(1, 1, 65);
@@ -47,6 +47,7 @@ public class Unagi_move2 : MonoBehaviour
 	}
 
 	//衝突判定
+	/*
 	private void OnCollisionEnter(Collision collision)
 	{
 		//PlayerBulletに当たったら自身を破壊
@@ -55,9 +56,14 @@ public class Unagi_move2 : MonoBehaviour
 			Destroy(this.gameObject);
 		}
 	}
+	*/
 	private void OnTriggerEnter(Collider other)
 	{
 		if (other.gameObject.tag == "PlayerBom")
+		{
+			Destroy(this.gameObject);
+		}
+		if (other.gameObject.tag == "PlayerBullet")
 		{
 			Destroy(this.gameObject);
 		}

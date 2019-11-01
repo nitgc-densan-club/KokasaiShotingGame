@@ -11,7 +11,7 @@ public class YamadaEnemy : MonoBehaviour
 	void Start()
 	{
 		rb = this.GetComponent<Rigidbody>();
-		force = new Vector3(0.0f, 0.0f, 1.0f) * speed;
+		force = new Vector3(0.0f, 0.0f, 1.0f);
 	}
 	// Update is called once per frame
 	void Update()
@@ -22,8 +22,9 @@ public class YamadaEnemy : MonoBehaviour
 			Instantiate(bullet, new Vector3(transform.position.x, transform.position.y, transform.position.z - 1), bullet.transform.rotation);
 			timeElasped = 0.0f;
 		}
-		rb.AddForce(force, ForceMode.Impulse);
+		rb.AddForce(force * speed, ForceMode.Impulse);
 	}
+	/*
 	void OnCollisionEnter(Collision collision)
 	{
 		if (collision.gameObject.tag == "PlayerBullet")
@@ -35,14 +36,16 @@ public class YamadaEnemy : MonoBehaviour
 			//それ以外の処理
 		}
 	}
+	*/
 	void OnTriggerEnter(Collider other)
 	{
 		if (other.gameObject.tag == "PlayerBomb")
 		{
 			Destroy(gameObject);
 		}
-		else
+		if (other.gameObject.tag == "PlayerBullet")
 		{
+			Destroy(gameObject);
 		}
 	}
 }

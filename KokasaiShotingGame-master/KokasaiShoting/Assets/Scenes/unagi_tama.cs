@@ -30,6 +30,7 @@ public class tama : MonoBehaviour
 	}
 
 	//衝突判定
+	/*
 	private void OnCollisionEnter(Collision collision)
 	{
 		//PlayerBulletに当たったら自身を破壊
@@ -38,9 +39,14 @@ public class tama : MonoBehaviour
 			Destroy(this.gameObject);
 		}
 	}
+	*/
 	private void OnTriggerEnter(Collider other)
 	{
 		if (other.gameObject.tag == "PlayerBom")
+		{
+			Destroy(this.gameObject);
+		}
+		if (other.gameObject.tag == "PlayerBullet")
 		{
 			Destroy(this.gameObject);
 		}

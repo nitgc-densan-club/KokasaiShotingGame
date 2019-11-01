@@ -11,8 +11,8 @@ public static class GameData
 }
 public class GameManager : MonoBehaviour
 {
-	public GameObject ScoreText, GameOverWindow/*, GameOverText, ContinueButton*/;//キャンバスごと有効無効化させるため不必要
-	Text Score/*, GameOver*/;
+	public GameObject ScoreText/*, GameOverWindow, GameOverText, ContinueButton*/;//キャンバスごと有効無効化させるため不必要
+	[SerializeField] Text Score/*, GameOver*/;
 	[SerializeField]
 	GameObject[] enemyTeams;
 	[SerializeField]
@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
 	[SerializeField]
 	GameObject ClearWindow;
 	[SerializeField]
-	GameObject gameOverWindow;
+	GameObject GameOverWindow;
 	int teamNumber;
 	GameObject[] numberOfEnemy;
 	int NumberOfEnemy;
@@ -29,9 +29,8 @@ public class GameManager : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-		GameOverWindow.SetActive(false);
+		//GameOverWindow.SetActive(false);
 		//GameOver = GameOverText.GetComponent<Text>();//Line15に同じ
-		Score = ScoreText.GetComponent<Text>();
 		//Invoke("gameOver", 3f);//デバッグ用gameOver起動コード
 		/*GameOver.enabled = false;
         ContinueButton.SetActive(false);*/
@@ -54,7 +53,7 @@ public class GameManager : MonoBehaviour
 					break;
 			}
 			randomsighn = Random.Range(0, levellimit);
-			Instantiate(enemyTeams[randomsighn], positionremainder[i].transform.position, Quaternion.identity);
+			Instantiate(enemyTeams[randomsighn], positionremainder[i].transform.position, enemyTeams[randomsighn].transform.rotation);
 		}
 
 		//クリアチェック用に敵が何体いるか最初に確認し数をintで格納しておく
@@ -82,12 +81,8 @@ public class GameManager : MonoBehaviour
 	public void gameOver()
 	{
 		//スコア情報更新
-		Score.text = "Score " + GameData.Gamescore + "pts";
-		/*Score.enabled = true;
-        GameOver.enabled = true;//テキスト表示
-        ContinueButton.SetActive(true);//(一応)コンティニュー用のボタンを有効に
-        GetComponent<GameOverWindow>().enabled = true;//ゲームオーバー画面を上乗せ表示*/
-		gameOverWindow.SetActive(true);
+		//Score.text = "Score " + GameData.Gamescore + "pts";
+		Score.enabled = true;
 		Time.timeScale = 0f;
 		GameData.Gamescore = 0;
 	}

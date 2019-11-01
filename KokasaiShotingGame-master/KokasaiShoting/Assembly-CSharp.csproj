@@ -57,9 +57,9 @@
      <Compile Include="Assets\Scenes\bombControl_player.cs" />
      <Compile Include="Assets\Scenes\BulletControl.cs" />
      <Compile Include="Assets\Scenes\BulletYamaguchi.cs" />
+     <Compile Include="Assets\Scenes\difenceLine.cs" />
      <Compile Include="Assets\Scenes\EnemyControlYamaguchi.cs" />
      <Compile Include="Assets\Scenes\GameManager.cs" />
-     <Compile Include="Assets\Scenes\GameOverWindow.cs" />
      <Compile Include="Assets\Scenes\PlayerControl.cs" />
      <Compile Include="Assets\Scenes\resultOutput.cs" />
      <Compile Include="Assets\Scenes\StartSceneManager.cs" />

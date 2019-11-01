@@ -5,7 +5,7 @@ using UnityEngine;
 public class unagi_move : MonoBehaviour
 {
 
-	float speed = -3.0f;
+	public float speed = -3.0f;
 	float delta = 0;
 	int counter = 0;
 
@@ -80,13 +80,14 @@ public class unagi_move : MonoBehaviour
 
 
 		//z座標が0になったら自身（main）を破壊
-		if (mypos.z <= 0)
+		if (mypos.z <= -20)
 		{
 			Destroy(this.gameObject);
 		}
 	}
 
 	//衝突判定
+	/* 
     private void OnCollisionEnter(Collision collision)
 	{
 		//PlayerBulletに当たったら自身を破壊
@@ -95,8 +96,13 @@ public class unagi_move : MonoBehaviour
 			Destroy(this.gameObject);
 		}
 	}
+	*/
 	private void OnTriggerEnter(Collider other)
 	{
+		if (other.gameObject.tag == "PlayerBullet")
+		{
+			Destroy(this.gameObject);
+		}
 		if (other.gameObject.tag == "PlayerBom")
 		{
 			Destroy(this.gameObject);

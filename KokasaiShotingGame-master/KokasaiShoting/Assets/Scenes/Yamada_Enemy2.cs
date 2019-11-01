@@ -5,7 +5,7 @@ public class Yamada_Enemy2 : MonoBehaviour
 	int a;
 	Rigidbody rb;
 	Vector3 nextVec;
-	public int speed = -3;
+	public int speed = 3;
 	public GameObject bullet;
 	private float timeElasped;
 	void Start()
@@ -35,6 +35,7 @@ public class Yamada_Enemy2 : MonoBehaviour
 		}
 		rb.AddForce(nextVec * speed, ForceMode.Impulse);
 	}
+	/* 
 	void OnCollisionEnter(Collision collision)
 	{
 		if (collision.gameObject.tag == "PlayerBullet")
@@ -46,14 +47,16 @@ public class Yamada_Enemy2 : MonoBehaviour
 			//それ以外の処理
 		}
 	}
+	*/
 	void OnTriggerEnter(Collider other)
 	{
 		if (other.gameObject.tag == "PlayerBomb")
 		{
 			Destroy(gameObject);
 		}
-		else
+		if (other.gameObject.tag == "PlayerBullet")
 		{
+			Destroy(gameObject);
 		}
 	}
 }
