@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -15,17 +16,22 @@ public class PlayerControl : MonoBehaviour
 	int rimit = 5;
 	bool shotflag = true;
 	bool bombflag = true;
-	bool guardflag = true; 
+	bool guardflag = true;
 	GameObject guardclone = null;
 	public AudioClip Player_ShotBulletSE;
 	AudioSource audioSource;
+
+	[SerializeField]
+	Text LifeText;
 
 	// Start is called before the first frame update
 	void Start()
 	{
 		rb = GetComponent<Rigidbody>();
 		audioSource = GetComponent<AudioSource>();
-		gameManager = GetComponent<GameManager>();
+		gameManager = FindObjectOfType<GameManager>();
+		
+		LifeText.text = life.ToString();
 	}
 
 	// Update is called once per frame
@@ -42,7 +48,6 @@ public class PlayerControl : MonoBehaviour
 		//ボム
 		if (Input.GetButtonDown("Bomb") && rimit > 0 && bombflag)
 		{
-		
 			Instantiate(bomb, new Vector3(transform.position.x, 10, 10), bomb.transform.rotation);
 			rimit--;
 			bombflag = false;
@@ -145,17 +150,19 @@ public class PlayerControl : MonoBehaviour
 			Destroy(collision.gameObject);
 			StartCoroutine(EffectTimer(30.0f, "speed"));
 		}
-		if (collision.gameObject.tag == "EnamyBullet")
+		if (collision.gameObject.tag == "EnemyBullet")
 		{
-			life = life - 1;
-			if (life == 0)
+			Debug.Log("damege!!");
+			life -= 1;
+			LifeText.text = life.ToString();
+			if (life <= 0)
 			{
-				Destroy(this.gameObject);
+				gameManager.gameOver();
 			}
 		}
 	}
 
-	private void OnTriggerEnter(Collider collider)
+	void OnTriggerExit(Collider collider)
 	{
 		if (collider.gameObject.tag == "item")
 		{
@@ -165,10 +172,12 @@ public class PlayerControl : MonoBehaviour
 			Destroy(collider.gameObject);
 			StartCoroutine(EffectTimer(30.0f, "speed"));
 		}
-		if (collider.gameObject.tag == "EnamyBullet")
+		if (collider.gameObject.tag == "EnemyBullet")
 		{
+			Destroy(collider.gameObject);
 			life = life - 1;
-			if (life == 0)
+			LifeText.text = life.ToString();
+			if (life <= 0)
 			{
 				gameManager.gameOver();
 			}

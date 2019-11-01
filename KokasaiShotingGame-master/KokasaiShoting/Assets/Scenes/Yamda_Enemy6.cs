@@ -11,6 +11,7 @@ public class Yamda_Enemy6 : MonoBehaviour
 	public Rigidbody rbody;
 	public GameObject bullet;
 	private float timeElasped;
+	GameManager game;
 	// Use this for initialization
 	void Start()
 	{
@@ -19,6 +20,7 @@ public class Yamda_Enemy6 : MonoBehaviour
 		yPosition = 3.5f;
 		rbody = this.GetComponent<Rigidbody>();
 		force = new Vector3(0.0f, 0.0f, 1.0f) * Speed;
+		game = FindObjectOfType<GameManager>();
 	}
 	// Update is called once per frame
 	void Update()
@@ -36,30 +38,50 @@ public class Yamda_Enemy6 : MonoBehaviour
 			Instantiate(bullet, new Vector3(transform.position.x, transform.position.y, transform.position.z - 1), bullet.transform.rotation);
 			timeElasped = 0.0f;
 		}
+		if (transform.position.x >= 60)
+		{
+			rbody.velocity = Vector3.zero;
+			transform.position = new Vector3(59.9f, transform.position.y, transform.position.z);
+		}
+		if (transform.position.x >= -60)
+		{
+			rbody.velocity = Vector3.zero;
+			transform.position = new Vector3(-59.9f, transform.position.y, transform.position.z);
+		}
+		if (transform.position.y >= 30)
+		{
+			rbody.velocity = Vector3.zero;
+			transform.position = new Vector3(transform.position.x, 29.9f, transform.position.z);
+		}
+		if (transform.position.y >= -30)
+		{
+			rbody.velocity = Vector3.zero;
+			transform.position = new Vector3(transform.position.x, -29.9f, transform.position.z);
+		}
 		rbody.AddForce(force, ForceMode.Impulse);
 	}
-	/* 
-	void OnCollisionEnter(Collision collision)
-	{
-		if (collision.gameObject.tag == "PlayerBullet")
-		{
-			Destroy(gameObject);
-		}
-		else
-		{
-			//それ以外の処理
-		}
-	}
-	*/
+	/*
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "PlayerBullet")
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            //それ以外の処理
+        }
+    }
+    */
 	void OnTriggerEnter(Collider other)
 	{
 		if (other.gameObject.tag == "PlayerBomb")
 		{
-			Destroy(gameObject);
+			game.DeleteAndClearCheck(this.gameObject);
 		}
 		if (other.gameObject.tag == "PlayerBullet")
 		{
-			Destroy(gameObject);
+			game.DeleteAndClearCheck(this.gameObject);
 		}
 	}
 }

@@ -9,11 +9,13 @@ public class Yamada_Enemy4 : MonoBehaviour
 	private float timeElasped = 0;
 	int rnd;
 	public GameObject bullet;
+	GameManager game;
 	// Use this for initialization
 	void Start()
 	{
 		rb = this.GetComponent<Rigidbody>();
 		nextVec = new Vector3(0.0f, 0.0f, 1.0f) * Speed;
+		game = FindObjectOfType<GameManager>();
 	}
 	// Update is called once per frame
 	void Update()
@@ -69,30 +71,50 @@ public class Yamada_Enemy4 : MonoBehaviour
 			Instantiate(bullet, new Vector3(transform.position.x, transform.position.y, transform.position.z - 1), bullet.transform.rotation);
 			timeElasped = 0.0f;
 		}
+		if (transform.position.x >= 60)
+		{
+			rb.velocity = Vector3.zero;
+			transform.position = new Vector3(59.9f, transform.position.y, transform.position.z);
+		}
+		if (transform.position.x <= -60)
+		{
+			rb.velocity = Vector3.zero;
+			transform.position = new Vector3(-59.9f, transform.position.y, transform.position.z);
+		}
+		if (transform.position.y >= 30)
+		{
+			rb.velocity = Vector3.zero;
+			transform.position = new Vector3(transform.position.x, 29.9f, transform.position.z);
+		}
+		if (transform.position.y <= -30)
+		{
+			rb.velocity = Vector3.zero;
+			transform.position = new Vector3(transform.position.x, -29.9f, transform.position.z);
+		}
 		rb.AddForce(nextVec * Speed, ForceMode.Impulse);
 	}
-	/* 
-	void OnCollisionEnter(Collision collision)
-	{
-		if (collision.gameObject.tag == "PlayerBullet")
-		{
-			Destroy(gameObject);
-		}
-		else
-		{
-			//それ以外の処理
-		}
-	}
-	*/
+	/*
+	 void OnCollisionEnter(Collision collision)
+	 {
+		 if (collision.gameObject.tag == "PlayerBullet")
+		 {
+			 Destroy(gameObject);
+		 }
+		 else
+		 {
+			 //それ以外の処理
+		 }
+	 }
+	 */
 	void OnTriggerEnter(Collider other)
 	{
 		if (other.gameObject.tag == "PlayerBomb")
 		{
-			Destroy(gameObject);
+			game.DeleteAndClearCheck(this.gameObject);
 		}
 		if (other.gameObject.tag == "PlayerBullet")
 		{
-			Destroy(gameObject);
+			game.DeleteAndClearCheck(this.gameObject);
 		}
 	}
 }

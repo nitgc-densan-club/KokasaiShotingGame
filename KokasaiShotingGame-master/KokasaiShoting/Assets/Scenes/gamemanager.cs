@@ -12,7 +12,7 @@ public static class GameData
 public class GameManager : MonoBehaviour
 {
 	public GameObject ScoreText/*, GameOverWindow, GameOverText, ContinueButton*/;//キャンバスごと有効無効化させるため不必要
-	[SerializeField] Text Score/*, GameOver*/;
+	[SerializeField] Text Score/*, GameOver*/, RunningScore;
 	[SerializeField]
 	GameObject[] enemyTeams;
 	[SerializeField]
@@ -24,6 +24,10 @@ public class GameManager : MonoBehaviour
 	int teamNumber;
 	GameObject[] numberOfEnemy;
 	int NumberOfEnemy;
+	public GameObject Sel;
+
+	//フェーズ
+	//public int phase_GameManeger;
 
 
 	// Start is called before the first frame update
@@ -36,29 +40,19 @@ public class GameManager : MonoBehaviour
         ContinueButton.SetActive(false);*/
 
 		//フェーズ管理(レベルによって出てくる敵キャラを制限、数値はお任せ)
-		int levellimit;
-		int randomsighn;
+		//int levellimit;
 		for (int i = 0; i < positionremainder.Length; i++)
 		{
-			switch (GameData.fase)//出てくる編隊の規制teamNumberの設定
-			{
-				case 1:
-					levellimit = 3;
-					break;
-				case 2:
-					levellimit = 4;
-					break;
-				default:
-					levellimit = positionremainder.Length;
-					break;
-			}
-			randomsighn = Random.Range(0, levellimit);
-			Instantiate(enemyTeams[randomsighn], positionremainder[i].transform.position, enemyTeams[randomsighn].transform.rotation);
+			Instantiate(enemyTeams[GameData.fase-1],
+			positionremainder[i].transform.position,
+			enemyTeams[GameData.fase-1].transform.rotation);
 		}
 
 		//クリアチェック用に敵が何体いるか最初に確認し数をintで格納しておく
 		numberOfEnemy = GameObject.FindGameObjectsWithTag("Enemy");
 		NumberOfEnemy = numberOfEnemy.Length;
+
+		RunningScore.text = "Score: " + GameData.Gamescore + " pts";
 	}
 
 	// Update is called once per frame
@@ -82,9 +76,12 @@ public class GameManager : MonoBehaviour
 	{
 		//スコア情報更新
 		//Score.text = "Score " + GameData.Gamescore + "pts";
+		GameOverWindow.SetActive(true);
 		Score.enabled = true;
+		GameData.fase = 1;
 		Time.timeScale = 0f;
 		GameData.Gamescore = 0;
+		Debug.Log("Done Game Over");
 	}
 
 	//ボタンに適用する関数
@@ -106,6 +103,7 @@ public class GameManager : MonoBehaviour
 	public void gonextfase()
 	{
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+		GameData.fase++;
 	}
 
 	//score増加時の処理
@@ -117,13 +115,20 @@ public class GameManager : MonoBehaviour
 	//faseクリア時[Clear]用のCanvas表示
 	void gameclear()
 	{
+		gonextfase();
+		/*
 		ClearWindow.SetActive(true);
+
+		Selectable sel = Sel.GetComponent<Selectable> ();
+		sel.Select ();*/
 	}
 
 	//敵を倒しクリアチェックをする
 	public void DeleteAndClearCheck(GameObject Delited)
 	{
 		NumberOfEnemy--;
+		AddScore(10 * GameData.fase);
+		RunningScore.text = "Score: " + GameData.Gamescore + " pts";
 		if (NumberOfEnemy == 0)
 		{
 			gameclear();

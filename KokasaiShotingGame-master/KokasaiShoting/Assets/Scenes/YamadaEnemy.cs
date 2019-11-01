@@ -8,16 +8,18 @@ public class YamadaEnemy : MonoBehaviour
 	public float speed = -0.01f;
 	Vector3 force;
 	Rigidbody rb;
+	GameManager game;
 	void Start()
 	{
 		rb = this.GetComponent<Rigidbody>();
 		force = new Vector3(0.0f, 0.0f, 1.0f);
+		game = FindObjectOfType<GameManager>();
 	}
 	// Update is called once per frame
 	void Update()
 	{
 		timeElasped += Time.deltaTime;
-		if (timeElasped >= 5)
+		if (timeElasped >= 6)
 		{
 			Instantiate(bullet, new Vector3(transform.position.x, transform.position.y, transform.position.z - 1), bullet.transform.rotation);
 			timeElasped = 0.0f;
@@ -41,11 +43,13 @@ public class YamadaEnemy : MonoBehaviour
 	{
 		if (other.gameObject.tag == "PlayerBomb")
 		{
-			Destroy(gameObject);
+			//Destroy(gameObject);
+			game.DeleteAndClearCheck(this.gameObject);
 		}
 		if (other.gameObject.tag == "PlayerBullet")
 		{
-			Destroy(gameObject);
+			//Destroy(gameObject);
+			game.DeleteAndClearCheck(this.gameObject);
 		}
 	}
 }

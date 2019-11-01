@@ -16,4 +16,18 @@ public class StartSceneManager : MonoBehaviour
 	{
 		Application.Quit();
 	}
+		void Update()
+	{
+		if (Input.GetKey(KeyCode.Escape))
+		{
+			//Application.Quit();
+			//SceneManager.LoadScene("StartWindow");
+			Application.Quit();
+		}
+
+		if (Input.anyKey)
+		{
+			PressedStart();
+		}
+	}
 }
