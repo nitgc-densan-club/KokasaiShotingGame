@@ -61,6 +61,8 @@
      <Compile Include="Assets\Scenes\GameManager.cs" />
      <Compile Include="Assets\Scenes\GameOverWindow.cs" />
      <Compile Include="Assets\Scenes\PlayerControl.cs" />
+     <Compile Include="Assets\Scenes\resultOutput.cs" />
+     <Compile Include="Assets\Scenes\StartSceneManager.cs" />
      <Compile Include="Assets\Scenes\StartWindow.cs" />
      <Compile Include="Assets\Scenes\UI_Takizawa.cs" />
      <Compile Include="Assets\Scenes\unagi_move.cs" />

@@ -18,7 +18,7 @@ public class EnemyControlYamaguchi : MonoBehaviour
 	{
 		rb = GetComponent<Rigidbody>();
 		// z軸方向に移動
-		force = new Vector3(1, 0, 1);
+		force = new Vector3(1, 0, -1);
 	}
 
 	// Update is called once per frame
@@ -44,11 +44,11 @@ public class EnemyControlYamaguchi : MonoBehaviour
 				case 1:
 					//オブジェクトにかかっている力を初期化
 					rb.velocity = new Vector3(0, 0, 0);
-					force = new Vector3(-1.5f, 0, 1);
+					force = new Vector3(-1.5f, 0, -1);
 					break;
 				case 2:
 					rb.velocity = new Vector3(0, 0, 0);
-					force = new Vector3(1, 0, 1.5f);
+					force = new Vector3(1, 0, -1.5f);
 					counter = 0;
 					break;
 			}

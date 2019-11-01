@@ -5,7 +5,7 @@ using UnityEngine;
 public class Unagi_move2 : MonoBehaviour
 {
 
-	float speed = 3.0f;
+	float speed = -3.0f;
 	float distance_two;
 
 	Vector3 start = new Vector3(1, 1, 65);

@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StartWindow : MonoBehaviour
 {
 	[SerializeField]
 	GameObject startWindow;
 	// Start is called before the first frame update
-	void Awake()
+	void Start()
 	{
 		startWindow.SetActive(true);
 		Time.timeScale = 0f;
@@ -18,7 +19,8 @@ public class StartWindow : MonoBehaviour
 	{
 		if (Input.GetKey(KeyCode.Escape))
 		{
-			Application.Quit();
+			//Application.Quit();
+			SceneManager.LoadScene("StartWindow");
 		}
 
 		if (Input.anyKey)

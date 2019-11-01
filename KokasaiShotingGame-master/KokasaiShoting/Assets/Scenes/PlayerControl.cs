@@ -105,25 +105,25 @@ public class PlayerControl : MonoBehaviour
 			rb.angularVelocity = Vector3.zero;
 		}
 		//移動制御
-		if (transform.position.x >= 40)
+		if (transform.position.x >= 60)
 		{
 			rb.velocity = Vector3.zero;
-			transform.position = new Vector3(39.9f, transform.position.y, transform.position.z);
+			transform.position = new Vector3(59.9f, transform.position.y, transform.position.z);
 		}
-		if (transform.position.x <= -40)
+		if (transform.position.x <= -60)
 		{
 			rb.velocity = Vector3.zero;
-			transform.position = new Vector3(-39.9f, transform.position.y, transform.position.z);
+			transform.position = new Vector3(-59.9f, transform.position.y, transform.position.z);
 		}
-		if (transform.position.y >= 20)
+		if (transform.position.y >= 30)
 		{
 			rb.velocity = Vector3.zero;
-			transform.position = new Vector3(transform.position.x, 19.9f, transform.position.z);
+			transform.position = new Vector3(transform.position.x, 29.9f, transform.position.z);
 		}
-		if (transform.position.y <= -20)
+		if (transform.position.y <= -30)
 		{
 			rb.velocity = Vector3.zero;
-			transform.position = new Vector3(transform.position.x, -19.9f, transform.position.z);
+			transform.position = new Vector3(transform.position.x, -29.9f, transform.position.z);
 		}
 
 

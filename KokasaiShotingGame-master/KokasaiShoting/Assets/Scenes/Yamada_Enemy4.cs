@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class Yamada_Enemy4 : MonoBehaviour
 {
-	int Speed = 1;
+	int Speed = -1;
 	Rigidbody rb;
 	Vector3 nextVec;
 	private float timeElasped = 0;

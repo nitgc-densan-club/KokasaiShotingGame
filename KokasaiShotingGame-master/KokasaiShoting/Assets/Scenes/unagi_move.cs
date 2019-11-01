@@ -11,7 +11,7 @@ public class unagi_move : MonoBehaviour
 
 	public GameObject tama;//tamaのオブジェクトを干渉
 	Rigidbody rb;
-	Vector3 nextVec = new Vector3(0, 0, 1); //次の進行方向
+	Vector3 nextVec = new Vector3(0, 0, -1); //次の進行方向
 	Vector3 mypos = new Vector3();//自身の座標をmyposとする
 
 	// Use this for initialization

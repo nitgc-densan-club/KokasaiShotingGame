@@ -5,7 +5,7 @@ public class Yamda_Enemy6 : MonoBehaviour
 {
 	Vector3 force;
 	private float speed;
-	public int Speed = 100;
+	public int Speed = -100;
 	private float radius;
 	private float yPosition;
 	public Rigidbody rbody;

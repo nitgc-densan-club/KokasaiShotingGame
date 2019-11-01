@@ -5,7 +5,7 @@ public class Yamada_Enemy2 : MonoBehaviour
 	int a;
 	Rigidbody rb;
 	Vector3 nextVec;
-	public int speed = 3;
+	public int speed = -3;
 	public GameObject bullet;
 	private float timeElasped;
 	void Start()

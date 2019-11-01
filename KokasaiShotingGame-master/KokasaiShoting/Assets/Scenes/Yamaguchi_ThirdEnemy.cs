@@ -9,7 +9,7 @@ public class Yamaguchi_ThirdEnemy : MonoBehaviour {
     public GameObject originObject;
     Rigidbody rb;
     Vector3 force;
-    public float speed = 0.1f;
+    public float speed = -0.1f;
 
     // Use this for initialization
     void Start()
