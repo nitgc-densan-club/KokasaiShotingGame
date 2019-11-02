@@ -17,7 +17,8 @@ public class PlayerControl : MonoBehaviour
 	bool bombflag = true;
 	bool guardflag = true;
 	GameObject guardclone = null;
-	public AudioClip Player_ShotBulletSE;
+	public AudioClip ShotBulletSE;
+	public AudioClip DamageSE;
 	AudioSource audioSource;
 
 	bool flag_muteki = true;
@@ -40,7 +41,7 @@ public class PlayerControl : MonoBehaviour
 		//バレット
 		if (Input.GetButton("Shot") && shotflag)
 		{
-			audioSource.PlayOneShot(Player_ShotBulletSE);
+			audioSource.PlayOneShot(ShotBulletSE);
 			Instantiate(ball, new Vector3(transform.position.x, transform.position.y, 10), ball.transform.rotation);
 			shotflag = false;
 			StartCoroutine(EffectTimer(0.2f, "shot"));
@@ -157,6 +158,7 @@ public class PlayerControl : MonoBehaviour
 		}
 		if (collision.gameObject.tag == "EnemyBullet")
 		{
+			audioSource.PlayOneShot(DamageSE);
 			Debug.Log("damege!!");
 			GameData.Life -= 1;
 			LifeText.text = GameData.Life.ToString();

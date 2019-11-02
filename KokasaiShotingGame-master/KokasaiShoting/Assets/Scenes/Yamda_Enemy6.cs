@@ -8,7 +8,7 @@ public class Yamda_Enemy6 : MonoBehaviour
 	public int Speed = -100;
 	private float radius;
 	private float yPosition;
-	public Rigidbody rbody;
+	Rigidbody rbody;
 	public GameObject bullet;
 	private float timeElasped;
 	GameManager game;

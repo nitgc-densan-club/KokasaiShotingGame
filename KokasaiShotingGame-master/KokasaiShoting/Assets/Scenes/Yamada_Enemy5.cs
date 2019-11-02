@@ -7,9 +7,10 @@ public class Yamada_Enemy5 : MonoBehaviour
 	public int Speed = -3;
 	private float radius;
 	private float yPosition;
-	public Rigidbody rbody;
+	Rigidbody rbody;
 	public GameObject bullet;
 	private float timeElasped;
+	GameManager game;
 	// Use this for initialization
 	void Start()
 	{
@@ -17,6 +18,7 @@ public class Yamada_Enemy5 : MonoBehaviour
 		radius = 20.0f;
 		yPosition = 3.5f;
 		rbody = this.GetComponent<Rigidbody>();
+		game = FindObjectOfType<GameManager>();
 		force = new Vector3(0.0f, 0.0f, 1.0f) * Speed;
 	}
 	// Update is called once per frame
@@ -54,11 +56,11 @@ public class Yamada_Enemy5 : MonoBehaviour
 	{
 		if (other.gameObject.tag == "PlayerBomb")
 		{
-			Destroy(gameObject);
+			game.DeleteAndClearCheck(gameObject);
 		}
 		if (other.gameObject.tag == "PlayerBullet")
 		{
-			Destroy(gameObject);
+			game.DeleteAndClearCheck(gameObject);
 		}
 	}
 }

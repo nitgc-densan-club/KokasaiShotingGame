@@ -8,9 +8,12 @@ public class Yamada_Enemy3 : MonoBehaviour
 	public int speed = 3;
 	public GameObject bullet;
 	private float timeElasped;
+	GameManager game;
+
 	void Start()
 	{
 		rb = this.GetComponent<Rigidbody>();
+		game = FindObjectOfType<GameManager>();
 		nextVec = new Vector3(0.0f, 0.0f, 1.0f) * speed;
 	}
 	// Update is called once per frame
@@ -20,12 +23,12 @@ public class Yamada_Enemy3 : MonoBehaviour
 		if (a == 0)
 		{
 			rb.velocity = new Vector3(0, 0, 0);
-			nextVec = new Vector3(0, 2, 1);
+			nextVec = new Vector3(0, 8, 1);
 		}
 		else
 		{
 			rb.velocity = new Vector3(0, 0, 0);
-			nextVec = new Vector3(0, -2, 1);
+			nextVec = new Vector3(0, -8, 1);
 		}
 		timeElasped += Time.deltaTime;
 		if (timeElasped >= 5)
@@ -52,11 +55,11 @@ public class Yamada_Enemy3 : MonoBehaviour
 	{
 		if (other.gameObject.tag == "PlayerBomb")
 		{
-			Destroy(gameObject);
+			game.DeleteAndClearCheck(gameObject);
 		}
 		if (other.gameObject.tag == "PlayerBullet")
 		{
-			Destroy(gameObject);
+			game.DeleteAndClearCheck(gameObject);
 		}
 	}
 }

@@ -31,37 +31,37 @@ public class Yamada_Enemy4 : MonoBehaviour
 					// transform.Translate(new Vector3(10, 0, 1/2) * Time.deltaTime * Speed);
 					nextVec.x = 10;
 					nextVec.y = 0;
-					nextVec.z = 1 / 2;
+					nextVec.z = 1;
 					break;
 				case 1:
 					//transform.Translate(new Vector3(-10, 0, 1/2) * Time.deltaTime * Speed);
 					nextVec.x = -10;
 					nextVec.y = 0;
-					nextVec.z = 1 / 2;
+					nextVec.z = 1;
 					break;
 				case 2:
 					//transform.Translate(new Vector3(0, 10, 1/2) * Time.deltaTime * Speed);
 					nextVec.x = 0;
 					nextVec.y = 0;
-					nextVec.z = 1 / 2;
+					nextVec.z = 1;
 					break;
 				case 3:
 					//transform.Translate(new Vector3(0, -10, 1/2) * Time.deltaTime * Speed);
 					nextVec.x = 0;
 					nextVec.y = -10;
-					nextVec.z = 1 / 2;
+					nextVec.z = 1;
 					break;
 				case 4:
 					//transform.Translate(new Vector3(10, 10, 1/2) * Time.deltaTime * Speed);
 					nextVec.x = 10;
 					nextVec.y = 10;
-					nextVec.z = 1 / 2;
+					nextVec.z = 1;
 					break;
 				case 5:
 					// transform.Translate(new Vector3(-10, -10, 1/2) * Time.deltaTime * Speed);
 					nextVec.x = -10;
 					nextVec.y = -10;
-					nextVec.z = 1 / 2;
+					nextVec.z = 1;
 					break;
 			}
 			timeElasped = 0.0f;

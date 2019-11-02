@@ -57,11 +57,6 @@ public class unagi_move : MonoBehaviour
 			//上記の進行方向にspeedの速度で力を加える
 			rb.AddForce(nextVec * speed, ForceMode.Impulse);
 		}
-		//z座標が0になったら自身（main）を破壊
-		if (mypos.z <= -20)
-		{
-			Destroy(this.gameObject);
-		}
 		if (transform.position.x >= 60)
 		{
 			rb.velocity = Vector3.zero;

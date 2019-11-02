@@ -123,4 +123,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originObject: {fileID: 5890536864877615330, guid: 7a0541ecfeebf448693154c024534ff2,
     type: 3}
-  speed: 0.1
+  speed: -0.2
